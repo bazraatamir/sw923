@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.quiz-container {
+    text-align: center;
+}
+
+.options-container {
+    margin-top: 20px;
+}
+
+.next-btn {
+    margin-top: 20px;
+    cursor: pointer;
+}
