@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="post-form">
+      <label for="post-title">Post Title:</label>
+      <input type="text" id="post-title" />
+      <label for="post-content">Post Content:</label>
+      <textarea id="post-content"></textarea>
+      <label for="image-url">Image URL:</label>
+      <input type="text" id="image-url" />
+      <button id="create-post-button">Create Post</button>
+    </div>
+
+    <script>
+      class Post {
+        constructor(title, content, image, like) {
+          (this.title = title),
+            (this.content = content),
+            (this.image = image),
+            (this.like = 0);
+        }
+      }
+      const postTitleInput = document.getElementById("post-title");
+      const postContentInput = document.getElementById("post-content");
+      const imageUrlInput = document.getElementById("image-url");
+      const createPostButton = document.getElementById("create-post-button");
+      const postsContainer = document.querySelector(".posts-container");
+      const arr = [];
+      createPostButton.addEventListener("click", () => {
+        const title = postTitleInput.value;
+        const content = postContentInput.value;
+        const imageUrl = imageUrlInput.value;
+        const post = new Post(title, imageUrl, content);
+        arr.push(post);
+
+        if (localStorage.getItem("Posts") === null) {
+          localStorage.setItem("Posts", JSON.stringify(arr));
+        } else {
+          const dataArr = JSON.parse(localStorage.getItem("Posts"));
+          dataArr.push(post);
+          localStorage.setItem("Posts", JSON.stringify(dataArr));
+        }
+      });
+    </script>
+  </body>
+</html>

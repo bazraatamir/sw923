@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="posts-container"></div>
+  </body>
+  <script>
+    window.addEventListener("load", loadPosts);
+    function loadPosts() {
+      const postsContainer = document.querySelector(".posts-container");
+      let posts = JSON.parse(localStorage.getItem("Posts"));
+      console.log(posts);
+      posts.forEach((element) => {
+        let title = document.createElement("h1");
+        title.innerText = element.title;
+        let content = document.createElement("p");
+        content.innerText = element.content;
+        let image = document.createElement("img");
+        image.src = element.image;
+        postsContainer.appendChild(image);
+        postsContainer.appendChild(title);
+        postsContainer.appendChild(image);
+      });
+    }
+  </script>
+</html>
